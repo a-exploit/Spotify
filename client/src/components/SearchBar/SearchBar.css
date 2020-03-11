@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 3rem;
+    background: #282828;
 }
 .search-bar-container button{
     background: #1DB954;
@@ -30,11 +31,23 @@
     right: 2%;
 }
 .search-bar-container img{
-    background-color: white;
     margin-left: 1vw;
     cursor: pointer;
 }
 .image-container{
     position: absolute;
     right: 10%;
+}
+.logo{
+    width: 2rem;
+
+}
+.home-button{
+    color: white;
+    position: absolute;
+    left: 3%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

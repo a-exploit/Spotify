@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './SearchBar.css'
 import grid from '../../grid.png'
 import list from '../../view.png'
+import logo from '../../spotify.png'
 export default class SearchBar extends Component {
     constructor(props) {
         super(props)
@@ -18,7 +19,10 @@ export default class SearchBar extends Component {
         })
     }
     search = () => {
+        if(this.state.search.length)
         this.props.setQuery(this.state.search)
+        else
+        alert('Enter an artist name....')
     }
     onEnter = (e) => {
         if (e.key === 'Enter')
@@ -39,11 +43,17 @@ export default class SearchBar extends Component {
             lists.classList.add('tracks-grid')
             lists.classList.remove('tracks-list')
         }
+    }   
+    redirectHome=()=>{
+        window.location.reload(false);
     }
     render() {
         return (
             <div className='search-bar-container'>
-                <input placeholder='Enter artist name...' onChange={this.handleChange} value={this.state.search} onKeyPress={this.onEnter}></input>
+                <div className='home-button' onClick={this.redirectHome}>
+                <img src={logo} className='logo'/>&nbsp; Spotify
+                </div>
+                <input placeholder='Enter an artist name...' onChange={this.handleChange} value={this.state.search} onKeyPress={this.onEnter}></input>
                 <button onClick={this.search}>Search!</button>
                 <div className='image-container'>
                     <img src={grid} title='Grid View' onClick={this.onGridClick}></img>

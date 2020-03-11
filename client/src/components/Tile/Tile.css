@@ -52,12 +52,13 @@
 }
 .track-tile-list img {
     padding-top: .5rem;
-    width: 5vw;
+    width: 4vw;
 }
 
 .track-tile-list h2 {
     font-size: 1rem;
     color: white;
+    margin: 1rem 0 0;
     margin-left: 1vw;
 }
 

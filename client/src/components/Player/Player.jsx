@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import './Player.css'
 export default class Player extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
     }
     render() {
         return (
             <div className='audio-player'>
-                <audio
+                {this.props.trackToPlay ? (<audio
                     controls
                     autoPlay
                     src={this.props.trackToPlay}>
-                </audio>
+                </audio>) : null}
+
             </div>
         )
     }

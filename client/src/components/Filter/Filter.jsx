@@ -55,7 +55,7 @@ export default class Filter extends Component {
     }
     render() {
         return (
-            <div className='filter-choices'>
+            <div className='filter-choices' id='scroll'>
                 {this.props.countries ? (<h4>Marketplace in which the track is available</h4>) : (<h4>Filter by Popularity</h4>)}
 
                 {this.state.list.map(item => {

@@ -1,7 +1,7 @@
 .tracks-grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 2rem 8vw;
+    padding: 1rem 0;
     grid-row-gap: 1rem;
     grid-row-gap: 1rem;
     row-gap: 1rem;
@@ -9,7 +9,7 @@
     grid-column-gap: 1rem;
     column-gap: 1rem;
     height: 84vh;
-    overflow-y: scroll;
+    overflow: hidden;
 }
 .landing-container{
     display: flex;
@@ -20,12 +20,42 @@
     flex-direction: column;
     justify-content: space-between;
     height: 93vh;
+    background: #282828;
 
 }
 .tracks-list{
     display: flex;
     flex-direction: column;
-    padding: 2rem 8vw;
+    padding: 2rem 0;
     height: 84vh;
-    overflow-y: scroll;
+    overflow: hidden;
+}
+.pagination{
+    background: #1DB954;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 9px;
+    margin-left: .7rem;
+    padding: 0.5rem;
+    color: white;
+    font-size: .8rem;
+    font-weight: 900;
+    height: 3rem;
+    margin: auto;
+}
+.content{
+    display: flex;
+    width: 72vw;
+}
+.content-container{
+    display: flex;
+    flex-direction: column;
+}
+.content-container h4{
+    color: white;
+    margin: 0;
+}
+.content h1{
+    color: white;
 }

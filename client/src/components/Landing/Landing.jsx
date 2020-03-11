@@ -12,14 +12,18 @@ export default class Landing extends Component {
             updatedTracks: [],
             popularityTracks: [],
             mixedTracks: [],
+            page: 0,
+            changed:false
         }
     }
     componentDidMount() {
         this.getTracks()
     }
-    getTracks = () => {
+    getTracks = (query=this.props.query) => {
         const params = this.getHashParams();
-        axios.get(`https://api.spotify.com/v1/search?q=${this.props.query}&type=track`, {
+        const limit=8
+
+        axios.get(`https://api.spotify.com/v1/search?q=${query}&type=track&offset=${this.state.page * 8}&limit=${limit}`, {
             headers: {
                 'Authorization': `Bearer ${params.access_token}`
             }
@@ -34,7 +38,7 @@ export default class Landing extends Component {
     }
     getTracksbyArtist = () => {
         const params = this.getHashParams();
-        axios.get(`https://api.spotify.com/v1/search?q=artist:${this.props.query}&type=track`, {
+        axios.get(`https://api.spotify.com/v1/search?q=artist:${this.props.query}&type=track&offset=${this.state.page * 8}&limit=8`, {
             headers: {
                 'Authorization': `Bearer ${params.access_token}`
             }
@@ -48,10 +52,18 @@ export default class Landing extends Component {
             })
         })
     }
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, prevState) {
         if (this.props.query !== prevProps.query) {
-            this.getTracksbyArtist();
+            this.getTracksbyArtist()
+            this.setState({changed:true})
         }
+        if (prevState.page !== this.state.page) {
+            if(this.state.changed)
+                this.getTracksbyArtist()
+            else
+                this.getTracks()
+        }
+
     }
 
     getHashParams = () => {
@@ -125,6 +137,16 @@ export default class Landing extends Component {
         }
         this.setState({ mixedTracks: common })
     }
+    onPageIncrement = () => {
+        this.setState({ page: this.state.page + 1 })
+    }
+    onPageDecrement = () => {
+        if(this.state.page!==0)
+        this.setState({ page: this.state.page - 1 })
+    }
+    onPageChange = () => {
+        this.setState({ page: this.state.page + 1 })
+    }
     render() {
         return (
             <>
@@ -137,8 +159,13 @@ export default class Landing extends Component {
                             <Filter filterTracksByPopularity={this.filterTracksByPopularity} />
                         </div>
                     </div>
-
+                    <div className='content-container'>
+                        <h4>Page no : {this.state.page+1}</h4>
+                    <div className='content'>
+                    <button className='pagination' onClick={this.onPageDecrement}>Prev</button>
+                    {this.state.mixedTracks.length?
                     <div className='tracks-grid'>
+                        
                         {this.state.mixedTracks.map(track => {
                             return <Tile
                                 album={track.album}
@@ -149,6 +176,11 @@ export default class Landing extends Component {
                                 setTrackToPlay={this.props.setTrackToPlay} />
                         })
                         }
+                    </div>:(<h1>No tracks found for current filters</h1>)
+    }
+                    <button className='pagination' onClick={this.onPageIncrement}>Next</button>
+
+                    </div>
                     </div>
                 </div>
             </>

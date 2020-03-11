@@ -10,8 +10,8 @@ const App=()=> {
   const [viewMode, setViewMode] = useState('grid')
   return (
     <div className="App">
-      <SearchBar setQuery={setQuery} setViewMode={setViewMode}/>
-      <Landing query={query} setTrackToPlay={setTrackToPlay} viewMode={viewMode}/>
+      <SearchBar setQuery={setQuery} setViewMode={setViewMode} />
+      <Landing query={query} setTrackToPlay={setTrackToPlay} viewMode={viewMode} />
       <Player trackToPlay={trackToPlay}/>
     </div>
   );
