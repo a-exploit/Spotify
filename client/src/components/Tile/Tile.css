@@ -1,0 +1,82 @@
+.track-tile-grid {
+    background: #282828;
+    width: 12.6vw;
+    /* height: 16rem; */
+    cursor: pointer;
+    position: relative;
+}
+
+.track-tile-grid .artists {
+    height: 4vw;
+    overflow: hidden;
+}
+
+.track-tile-grid .artists p {
+    display: inline;
+    text-decoration: none;
+    color: hsl(0, 0%, 70%);
+    font-size: .8rem;
+}
+
+.track-tile-grid img {
+    padding-top: .5rem;
+    width: 10vw;
+}
+
+.track-tile-grid h2 {
+    font-size: 1rem;
+    color: white;
+}
+
+.track-tile-grid:hover .play-button {
+    opacity: 100%;
+}
+
+.play-button {
+    position: absolute;
+    right: 0;
+    bottom: 20%;
+    opacity: 0%;
+    transition: all .2s ease-in;
+    width: 2rem !important;
+}
+
+.track-tile-list{
+    width: 50vw;
+    background: #282828;
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    text-align: left;
+    border: 1px solid black;
+}
+.track-tile-list img {
+    padding-top: .5rem;
+    width: 5vw;
+}
+
+.track-tile-list h2 {
+    font-size: 1rem;
+    color: white;
+    margin-left: 1vw;
+}
+
+.track-tile-list:hover .play-button {
+    opacity: 100%;
+}
+.track-tile-list .artists {
+    /* height: 4vw; */
+    margin-left: 1vw;
+    overflow: hidden;
+}
+
+.track-tile-list .artists p {
+    display: inline;
+    text-decoration: none;
+    color: hsl(0, 0%, 70%);
+    font-size: .8rem;
+    
+}
+.track-tile-list .info-container{
+    text-align: left;
+}
