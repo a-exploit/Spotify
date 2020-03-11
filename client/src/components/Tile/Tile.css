@@ -29,14 +29,14 @@
 }
 
 .track-tile-grid:hover .play-button {
-    opacity: 99%;
+    opacity: 1.0;
 }
 
 .play-button {
     position: absolute;
     right: 0;
     bottom: 20%;
-    opacity: 0%;
+    opacity: 0;
     transition: all .2s ease-in;
     width: 2rem !important;
 }
@@ -63,7 +63,7 @@
 }
 
 .track-tile-list:hover .play-button {
-    opacity: 99%;
+    opacity: 1.0;
 }
 .track-tile-list .artists {
     /* height: 4vw; */
