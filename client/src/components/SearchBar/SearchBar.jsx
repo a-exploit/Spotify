@@ -59,7 +59,7 @@ export default class SearchBar extends Component {
                     <img src={grid} title='Grid View' onClick={this.onGridClick}></img>
                     <img src={list} title='List View' onClick={this.onListClick}></img>
                 </div>
-                <a href='http://localhost:8888'><button>Login</button></a>
+                <a href='https://spotify-ayush.herokuapp.com/'><button>Login</button></a>
             </div>
         )
     }
