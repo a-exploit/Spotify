@@ -29,7 +29,7 @@
 }
 
 .track-tile-grid:hover .play-button {
-    opacity: 100%;
+    opacity: 99%;
 }
 
 .play-button {
@@ -63,7 +63,7 @@
 }
 
 .track-tile-list:hover .play-button {
-    opacity: 100%;
+    opacity: 99%;
 }
 .track-tile-list .artists {
     /* height: 4vw; */
