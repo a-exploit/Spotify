@@ -5,6 +5,7 @@ export default class Tile extends Component {
     constructor(props) {
         super(props)
     }
+    //Play clicked track if preview url is provided
     setTrack=()=>{
         if(this.props.previewUrl)
         this.props.setTrackToPlay(this.props.previewUrl)

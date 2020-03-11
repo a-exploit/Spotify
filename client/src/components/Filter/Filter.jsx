@@ -25,11 +25,12 @@ export default class Filter extends Component {
         }
     }
     filter = (e) => {
+        //To check if filter is already in the filters array
         if (!this.state.filters.includes(e.target.value)) {
             this.setState({
                 filters: [...this.state.filters, e.target.value]
             }, function () {
-                if (this.props.countries)
+                if (this.props.countries)                                  //To check if Filter is for countries or popularity
                     this.props.filterTracks(this.state.filters)
                 else
                     this.props.filterTracksByPopularity(this.state.filters)
@@ -59,7 +60,7 @@ export default class Filter extends Component {
                 {this.props.countries ? (<h4>Marketplace in which the track is available</h4>) : (<h4>Filter by Popularity</h4>)}
 
                 {this.state.list.map(item => {
-                    return <label><input onClick={this.filter} type="checkbox" name="favorite_pet" value={item.Code} />{item.Name}<br /></label>
+                    return <label><input onClick={this.filter} type="checkbox" name="filter" value={item.Code} />{item.Name}<br /></label>
                 })}
             </div>
         )

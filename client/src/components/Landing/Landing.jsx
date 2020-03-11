@@ -19,6 +19,7 @@ export default class Landing extends Component {
     componentDidMount() {
         this.getTracks()
     }
+    //get tracks for initial query
     getTracks = (query=this.props.query) => {
         const params = this.getHashParams();
         const limit=8
@@ -36,6 +37,8 @@ export default class Landing extends Component {
             })
         })
     }
+    //get tracks of a particular artist
+
     getTracksbyArtist = () => {
         const params = this.getHashParams();
         axios.get(`https://api.spotify.com/v1/search?q=artist:${this.props.query}&type=track&offset=${this.state.page * 8}&limit=8`, {
@@ -52,6 +55,7 @@ export default class Landing extends Component {
             })
         })
     }
+    //Paginination and search logic
     componentDidUpdate(prevProps, prevState) {
         if (this.props.query !== prevProps.query) {
             this.getTracksbyArtist()
@@ -65,7 +69,7 @@ export default class Landing extends Component {
         }
 
     }
-
+    //to get access_token
     getHashParams = () => {
         var hashParams = {};
         var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -75,8 +79,8 @@ export default class Landing extends Component {
         }
         return hashParams;
     }
+    //Filter tracks by country
     filterTracks = (filters) => {
-        // console.log(filters)
         if (filters.length) {
             const filteredBools = this.state.tracks.map((track) => {
                 return filters.every(v => track.available_markets.includes(v))
@@ -102,6 +106,8 @@ export default class Landing extends Component {
 
 
     }
+    //Filter tracks by popularity
+
     filterTracksByPopularity = (filters) => {
         if (filters.length) {
             const max = Math.max(...filters)
@@ -126,6 +132,7 @@ export default class Landing extends Component {
         }
 
     }
+    //search for the intersection of both the filters
     mixTracks = () => {
         var common = [];
         for (var i = 0; i < this.state.updatedTracks.length; ++i) {
@@ -137,6 +144,7 @@ export default class Landing extends Component {
         }
         this.setState({ mixedTracks: common })
     }
+    //Pagination controls
     onPageIncrement = () => {
         this.setState({ page: this.state.page + 1 })
     }
@@ -167,7 +175,7 @@ export default class Landing extends Component {
                     <div className='tracks-grid'>
                         
                         {this.state.mixedTracks.map(track => {
-                            return <Tile
+                            return <Tile                                        //Single Track tile
                                 album={track.album}
                                 name={track.name}
                                 artists={track.artists}

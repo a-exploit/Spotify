@@ -13,21 +13,25 @@ export default class SearchBar extends Component {
     componentDidMount() {
 
     }
+    //to handle input value
     handleChange = (e) => {
         this.setState({
             search: e.target.value
         })
     }
+    //to search the input value
     search = () => {
         if(this.state.search.length)
         this.props.setQuery(this.state.search)
         else
         alert('Enter an artist name....')
     }
+    //Checks if Enter key is pressed
     onEnter = (e) => {
         if (e.key === 'Enter')
             this.search()
     }
+    //Swtiches view to list
     onListClick = () => {
         const grids = document.querySelector('.tracks-grid')
         if (grids) {
@@ -36,6 +40,7 @@ export default class SearchBar extends Component {
             grids.classList.remove('tracks-grid')
         }
     }
+    //Switches view to Grid
     onGridClick = () => {
         const lists = document.querySelector('.tracks-list')
         if (lists) {
@@ -43,7 +48,8 @@ export default class SearchBar extends Component {
             lists.classList.add('tracks-grid')
             lists.classList.remove('tracks-list')
         }
-    }   
+    }
+    //Redirect bace to home
     redirectHome=()=>{
         window.location.reload(false);
     }
