@@ -26,7 +26,7 @@
 .tracks-list{
     display: flex;
     flex-direction: column;
-    padding: 2rem 0;
+    padding: 1rem 0;
     height: 84vh;
     overflow: hidden;
 }
